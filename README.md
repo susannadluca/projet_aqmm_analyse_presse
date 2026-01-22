@@ -1,33 +1,35 @@
 Projet AQMM - Analyse quantitative et modélisation thématique de la presse française (1950–1970) 
 Master 2 Humanités Numériques – École des Chartes – Janvier 2026 Autrice : Susanna De Luca Contact : susanna.de.luca@chartes.psl.eu
 
-Contexte général et motivation: ce projet s’inscrit dans le cadre du cours consacré aux approches quantitatives et à la modélisation mathématique appliquées aux sciences humaines et sociales. Il a pour objectif de mettre à l’épreuve, sur un cas concret, les méthodes abordées en cours et d’évaluer leur utilisabilité dans le cadre d’un projet de recherche personnel.
-Le travail présenté ici est directement lié à mon projet de mémoire de master, consacré à l’étude du journalisme culturel après la Seconde Guerre mondiale dans une perspective comparée entre la France et l’Italie. Le projet développé dans le cadre de cette UE constitue une première expérimentation méthodologique, sur un corpus volontairement limité, permettant d’examiner les apports et les limites des méthodes quantitatives appliquées à des données textuelles issues de la presse.
+Ce projet s’inscrit dans une réflexion plus large sur l’évolution du discours médiatique en France durant l’après-guerre. L’objectif est d’examiner comment les journaux français ont structuré, sélectionné et formulé l’information entre les années 1950 et 1970, période marquée par des transformations sociales, politiques et culturelles majeures.
 
-Question de recherche: dans quelle mesure les méthodes de vectorisation textuelle et de modélisation thématique permettent-elles d’identifier et de décrire des structures thématiques dans la presse française entre 1950 et 1970, et dans quelle mesure ces méthodes sont-elles adaptées à une analyse diachronique fondée sur des textes issus de l’OCR ?
-Cette question est formulée dans une perspective méthodologique. Il ne s’agit pas de produire une interprétation historique exhaustive du corpus, mais d’évaluer la pertinence des outils mobilisés, leur capacité descriptive et leurs limites dans une perspective de recherche ultérieure.
+Pour répondre à ces questions, j’ai mobilisé un ensemble de méthodes quantitatives afin d’examiner simultanément le lexique, les thèmes et les structures sémantiques du corpus.
 
-Corpus et nature des données: le corpus est constitué d’articles de presse française issus du jeu de données *French Public Domain Newspapers*, mis à disposition par le consortium PleIAs via la plateforme Hugging Face. Les documents sont des textes numérisés en domaine public, produits par reconnaissance optique de caractères (OCR), accompagnés de métadonnées telles que la date de publication, le titre et la longueur des articles.
-La période couverte par le dataset est très large. Pour les besoins de ce projet, l’analyse a été restreinte aux années 1950 à 1979, afin de constituer un corpus permettant une comparaison diachronique sur trois décennies : les années 1950, 1960 et 1970. Le chargement des données a été réalisé en mode *streaming*, compte tenu de la taille importante du dataset d’origine.
-La sélection des articles repose sur plusieurs critères : filtrage par date, constitution d’un échantillon équilibré par décennie, et exclusion de textes trop courts ou présentant une structure fortement dégradée. Après nettoyage et filtrage, le corpus final comprend 292 articles.
+Le corpus provient du jeu de données French Public Domain Newspapers disponible sur Hugging Face.
 
-Démarche méthodologique: le projet repose sur une chaîne d’analyse articulant plusieurs étapes successives, depuis la préparation des données jusqu’à la modélisation thématique et l’analyse diachronique.
-Les textes ont d’abord fait l’objet d’un prétraitement visant à corriger, autant que possible, les imperfections liées à l’OCR. Ce nettoyage comprend la mise en minuscules, la suppression de la ponctuation, des chiffres et des caractères non alphabétiques, ainsi que l’élimination des mots vides en français à l’aide de la bibliothèque NLTK. Des contrôles qualitatifs ont été réalisés par l’inspection d’extraits de texte avant et après nettoyage.
-Une analyse descriptive du corpus a ensuite été menée afin d’examiner la distribution des articles par décennie, la longueur des textes et la présence de valeurs aberrantes. Cette étape permet de vérifier la cohérence globale du corpus avant toute modélisation.
-Les textes nettoyés ont ensuite été représentés sous forme vectorielle à l’aide de la méthode TF-IDF (Term Frequency–Inverse Document Frequency). Le vocabulaire a été limité aux 5 000 termes les plus informatifs, afin de réduire la dimensionnalité et le bruit. Cette représentation constitue la base mathématique de la modélisation thématique.
-La modélisation thématique a été réalisée à l’aide de la méthode NMF (Non-negative Matrix Factorization). Dix topics ont été extraits, choix guidé par un compromis entre lisibilité et granularité. Pour chaque topic, les termes les plus représentatifs ont été identifiés, et un topic dominant a été attribué à chaque document.
-Enfin, la distribution des topics a été analysée selon les décennies afin d’observer les évolutions thématiques dans le temps et d’évaluer la pertinence d’une approche diachronique fondée sur ces méthodes.
+J’ai constitué un sous-corpus équilibré de 300 articles, répartis équitablement entre les années 1950, 1960 et 1970.
+Après une phase de nettoyage et de contrôle de qualité, le corpus final comprend 292 articles, chacun accompagné: de l’année exacte extraite automatiquement malgré les imperfections OCR, de la décennie correspondante; du texte nettoyé utilisé pour les analyses.
 
-Résultats: l’analyse met en évidence l’existence de thématiques relativement structurées, associées notamment à la religion, à l’aviation et aux techniques, au sport, à l’administration, à l’économie et à la production culturelle. La répartition des topics varie selon les décennies, suggérant des évolutions dans les centres d’intérêt et les types de discours présents dans la presse française sur la période étudiée.
-Les résultats doivent toutefois être interprétés avec prudence, en raison de l’hétérogénéité du corpus et de la qualité variable des textes OCR. Les sorties du modèle sont présentées sous forme de tableaux, de distributions et de listes de termes directement intégrés au notebook.
+Le repository contient soit le corpus initial, soit le corpus enrichi après les traitements et la modélisation thématique.
 
-Discussion et limites: plusieurs limites doivent être soulignées. Le corpus demeure relativement restreint et hétérogène, les données sont affectées par un bruit important lié à l’OCR, et le choix du nombre de topics repose sur une décision exploratoire. La modélisation thématique ne permet pas, à elle seule, de rendre compte de la complexité discursive des textes de presse.
-Ces limites font toutefois partie intégrante de la réflexion méthodologique engagée dans le cadre du cours, et constituent des éléments essentiels pour orienter un travail de recherche ultérieur.
+Approche méthodologique:
+L’analyse repose sur une chaîne de traitement entièrement reproductible, développée en Python.
+Elle commence par un nettoyage linguistique classique (minuscules, suppression de la ponctuation, élimination des symboles OCR récurrents, retrait des stopwords), puis par une vectorisation en TF–IDF, choisie pour sa robustesse sur des textes courts ou bruités.
+Sur cette base, j’ai entraîné un modèle NMF (10 topics), particulièrement adapté aux matrices TF–IDF et plus stable que LDA pour ce type de données.
+Le modèle produit des thèmes interprétables à partir de listes pondérées de mots, ainsi que des scores thématiques pour chaque article.
+J’ai ensuite analysé la distribution de ces thèmes dans le temps afin d’observer les évolutions d’une décennie à l’autre.
+Enfin, une analyse de co-occurrences lexicale a permis d’explorer la structure sémantique globale du corpus, en identifiant les nœuds centraux et les principales communautés lexicales.
 
-Ce travail pourrait être prolongé par la constitution d’un corpus plus homogène, centré sur la presse culturelle, par une comparaison entre différents espaces nationaux, ou par l’expérimentation d’autres approches de modélisation abordées en cours. Une articulation plus étroite entre analyse quantitative et lecture qualitative des textes constituerait également une perspective de recherche pertinente.
+Principaux résultats:
+L’analyse montre que le corpus contient des thématiques couvrant un spectre très varié : administration municipale, politique sociale, aviation, religion, mouvements sportifs, économie internationale, etc.
+Certaines thématiques révèlent une continuité forte sur les trois décennies, tandis que d’autres évoluent nettement selon le contexte historique (modernisation, Guerre froide, transformations institutionnelles, montée des loisirs).
+La modélisation NMF met également en lumière un thème culturel littéraire lié à Péguy, un thème socio-politique, un thème religieux, un thème sportif et un thème administratif. L’analyse temporelle montre que certains topics deviennent plus présents à partir des années 1960, tandis que d’autres déclinent ou restent stables.
+La structure du réseau de co-occurrences — relativement dense mais faiblement modularisée — reflète le caractère hétérogène du corpus, composé d’articles courts sur des sujets très divers mais partageant un vocabulaire institutionnel commun.
 
-Le dépôt contient le notebook principal de l’analyse, `projet_AQMM_clean.ipynb`, ainsi que le présent fichier README décrivant le cadre, les données et la démarche méthodologique du projet.
+L’ensemble du travail a été réalisé sous Python (Google Colab) en utilisant: pandas et numpy pour le traitement des données, regex pour l’extraction automatique des années, nltk pour les stopwords, scikit-learn pour TF–IDF et NMF, matplotlib et seaborn pour les graphiques, networkx pour les analyses de réseaux.
 
-Le projet a été développé en Python dans un environnement Google Colab. Les principales bibliothèques mobilisées sont pandas, numpy, scikit-learn, nltk, datasets et matplotlib.
+Ces outils permettent une analyse reproductible et conforme à l’esprit du cours : une modélisation mathématique appliquée à des données textuelles de sciences humaines.
 
-Remarque finale: ce projet a été réalisé dans un cadre pédagogique. Il vise avant tout à démontrer la capacité à mobiliser de manière critique et raisonnée les méthodes quantitatives discutées en cours dans le cadre d’un projet personnel en humanités numériques.
+Limites: Le corpus reste restreint (292 articles) et comporte du bruit lié à l’OCR, ce qui limite la finesse de certaines analyses. La modélisation thématique via TF–IDF + NMF reste une approche bag-of-words, insensible à la syntaxe, aux relations profondes ou aux connotations. Une analyse plus avancée nécessiterait des embeddings contextuels ou un corpus plus vaste et homogène.
+
+Ce travail pourrait être prolongé en : élargissant le corpus à d’autres années ou à d’autres titres, appliquant des méthodes modernes de représentation sémantique (BERT, word2vec), comparant l’évolution du discours français avec celle d’autres pays, intégrant cette analyse dans la problématique de mon mémoire sur les transformations culturelles et discursives post-guerre.
